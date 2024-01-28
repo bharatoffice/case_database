@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfrimationDialogComponent } from './confrimation-dialog/confrimation-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatTableModule,
     MatDialogModule,
     FormsModule,
     MatIconModule,

@@ -3,16 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 
 
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 table{
-    @apply border border-gray-800;
+    @apply border border-[#ddd];
     tr{
-            td, th{
-                @apply border border-gray-800 px-3 py-2 text-base
+            th,td{
+                span{
+                    @apply px-2;
+                }
+                // @apply text-xl ;
+                // @apply border border-gray-800 px-3 py-2 text-base
             }
         }
     
