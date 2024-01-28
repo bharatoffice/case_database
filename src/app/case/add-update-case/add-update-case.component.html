@@ -1,0 +1,74 @@
+<div matDialogTitle class="!flex !justify-between !align-middle">
+    <h1>{{this.heading}}</h1>
+    <button mat-icon-button *ngIf="this.form.disabled" (click)="this.form.enable()">
+        <mat-icon class="mat-18">edit</mat-icon>
+    </button>
+</div>
+
+<mat-dialog-content>
+    <div>
+        <form [formGroup]="this.form">
+            <div class="grid md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        File No.
+                    </label>
+                    <input formControlName="fileNo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="File No.">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Pervious Date
+                    </label>
+                    <input formControlName="perviousDate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Case No.
+                    </label>
+                    <input formControlName="caseNo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Party Name 1.
+                    </label>
+                    <input formControlName="partyName1" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Party Name 2.
+                    </label>
+                    <input formControlName="partyName2" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                </div>
+                <div>
+                    <label for="exampleCaseStage" class="block text-gray-700 text-sm font-bold mb-2">Case Stage</label>
+                    <select formControlName="caseStage" class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" id="exampleCaseStage">
+                        <option selected value="Fir">Fir</option>
+                        <option value="Fr">Fr</option>
+                        <option value="Challan">Challan</option>
+                        <!-- <option value="3">Three</option> -->
+                    </select>
+                    <!-- <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Case Stage	
+                    </label>
+                    <input formControlName="caseStage" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text"> -->
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Next Date	
+                    </label>
+                    <input formControlName="nextDate" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="date">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Remark
+                    </label>
+                    <input formControlName="remark" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text">
+                </div>
+            </div>
+        </form>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions *ngIf="this.form.enabled" align="center">
+    <button (click)="onSubmit()" mat-flat-button color="primary">{{this.mode == 'add' ? 'Add' : 'Save'}}</button>
+</mat-dialog-actions>

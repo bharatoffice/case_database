@@ -1,0 +1,60 @@
+<!-- <app-add-edit-case></app-add-edit-case> -->
+<div class="container max-w-[1400px] sm:px-3 px-2 mx-auto py-6">
+    <h2 class="md:!text-5xl sm:!text-3xl !text-3xl text-center">Bharat Kumar Goyal</h2>
+    <!-- <button (click)="onOpenCaseDialog()" class="main_btn">Add</button> -->
+    <!-- Modal toggle -->
+    <div class=" mb-4 mx-auto flex justify-end">
+        
+        <button mat-flat-button (click)="onOpenAddCaseDialog()" color="primary">
+            Add
+        </button>
+    </div>
+
+    <!-- tabel -->
+    <div class="overflow-x-auto pb-10">
+        <table class="table-auto mx-auto">
+            <thead>
+                <tr>
+                  <th>File No.</th>
+                  <th>Pervious Date</th>
+                  <th>Case No.</th>
+                  <th>Party Name 1.</th>
+                  <th>Party Name 2.</th>
+                  <th>Case Stage</th>
+                  <th>Next Date</th>
+                  <th>Remark</th>
+                  <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of this.allCases">
+                    <tr>
+                        <td>{{item.fileNo}}</td>
+                        <td>{{item.perviousDate}}</td>
+                        <td>{{item.caseNo}}</td>
+                        <td>{{item.partyName1}}</td>
+                        <td>{{item.partyName2}}</td>
+                        <td>{{item.caseStage}}</td>
+                        <td>{{item.nextDate}}</td>
+                        <td>{{item.remark}}</td>
+                        <td>
+                            <button (click)="onEdit(item, 'view')" mat-icon-button>
+                                <mat-icon class="material-symbols-outlined">visibility</mat-icon>
+                            </button>
+                            <button (click)="onEdit(item, 'edit')" mat-icon-button>
+                                <mat-icon class="material-symbols-outlined">edit</mat-icon>
+                            </button>
+                            <button (click)="onDelete(item)" mat-icon-button>
+                                <mat-icon class="material-symbols-outlined">delete</mat-icon>
+                            </button>
+                        </td>
+                    </tr>
+    
+                </ng-container>
+            </tbody>    
+        </table>
+        <p *ngIf="!this.allCases?.length" class="text-center text-gray-500 py-6 w-full">No Data Found.</p>
+    </div>
+
+
+</div>
