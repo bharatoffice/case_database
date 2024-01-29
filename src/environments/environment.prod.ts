@@ -5,7 +5,7 @@ export const environment = {
   //   authDomain: "casedatabase-a68b5.firebaseapp.com",
   //   projectId: "casedatabase-a68b5",
   //   storageBucket: "casedatabase-a68b5.appspot.com",
-  //   messagingSenderId: "763349878909",
+  //   messagingSenderId: "763349878909", 
   //   appId: "1:763349878909:web:dd50c35d263a78cfb40914"
   // }
    // bharat fire
