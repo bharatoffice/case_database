@@ -8,10 +8,8 @@ import { CaseModule } from './case/case.module';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat'; 
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';    
-// import { getAuth, provideAuth } from '@angular/fire/auth';        
-// import { getFirestore, provideFirestore } from '@angular/fire/firestore';        
-// import { getStorage, provideStorage } from '@angular/fire/storage';        
-// import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -25,7 +23,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     AngularFireModule, 
    // firebase
    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)), 
-  //  provideFirestore(() => getFirestore()), 
+   provideFirestore(() => getFirestore()), 
 
   ],
   providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig}],
