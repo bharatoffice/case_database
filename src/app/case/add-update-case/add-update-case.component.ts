@@ -51,6 +51,7 @@ export class AddUpdateCaseComponent implements OnInit {
   createForm(data?:any){
     this.form = this._fb.group({
       fileNo : [data?.fileNo || ''],
+      courtName : [data?.courtName || ''],
       perviousDate : [data?.perviousDate || ''],
       caseNo : [data?.caseNo || ''],
       partyName1 : [data?.partyName1 || ''],
@@ -62,18 +63,12 @@ export class AddUpdateCaseComponent implements OnInit {
   }
 
   onSubmit(){
-
-    console.log("this is form", this.form.value);
     const param = this.form.value;
     const date = new Date();
     
-    
-    
     if(this._data.mode == 'edit' && this._data.item.docId){
       param['docId'] = this._data.item.docId;
-      
       param['updateAt'] = new Date().getTime();
-      
       
       const casesData = this.afs.collection('cases').doc(param['docId'])
       casesData.set(param)
@@ -81,17 +76,18 @@ export class AddUpdateCaseComponent implements OnInit {
       this._matsnackbar.open('Case Update Successfully', 'OKAY', {duration : 4000});
       
     }else{
-      param['docId'] = `${param.fileNo}_${date.getTime()}`
       
+      param['docId'] = `${param.fileNo}_${date.getTime()}`;
       param['createAt'] = date.getTime();
       param['isDeleted'] = 0;
       
+      console.log("form fieeld data", this.form.value);
+      console.log("add case data", param); 
       const casesData = this.afs.collection('cases').doc(param['docId'])
-      casesData.set(param)
+      casesData.set(param);
       this._matDialogRef.close();
       this._matsnackbar.open('Case Added Successfully', 'OKAY', {duration : 4000});
     }
-    
   }
 
 }

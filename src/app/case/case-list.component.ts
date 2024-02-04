@@ -15,7 +15,7 @@ export class CaseListComponent implements OnInit {
 
   allCases:any;
   @ViewChild('TABLE') table!: ElementRef | undefined;
-  displayedColumns = ['fileNo', 'perviousDate', 'caseNo', 'partyName1', 'partyName2', 'caseStage', 'nextDate', 'remark', 'action'];
+  displayedColumns = ['fileNo', 'perviousDate','courtName', 'caseNo', 'partyName1', 'partyName2', 'caseStage', 'nextDate', 'remark', 'action'];
   dataSource!:any;
   filterDate!:any;
   backupData!:any;
@@ -32,10 +32,12 @@ export class CaseListComponent implements OnInit {
 
   loadData(){
     const casesData = this.afs.collection('cases')
-    casesData.valueChanges().pipe(take(1)).subscribe((res)=>{
-      this.backupData = res;
+    casesData.valueChanges().subscribe((res)=>{
+      this.backupData = res; 
       this.allCases = res.filter((item:any) => !item.isDeleted);
       this.dataSource = this.allCases;
+      console.log(" this.dataSource",  this.dataSource);
+      
     })
   }
 
@@ -73,16 +75,14 @@ export class CaseListComponent implements OnInit {
         console.log("primary", res);
         item['isDeleted'] = 1;
         const casesData = this.afs.collection('cases').doc(item['docId'])
-        casesData.set(item).then((deletres)=>{
-        })
+        // casesData.set(item).then((deletres)=>{
+        // })
       }
     })
 
   }
 
   exportJson(): void {
-    // const res = 'jagdishseervi'; 
-
     this._excelService.exportAsExcelFile(JSON.parse("jagdish seervi"), 'PeopleByCity');
   }
 

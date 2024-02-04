@@ -1,6 +1,6 @@
 <div matDialogTitle class="!flex !justify-between !align-middle">
-    <h1>{{this.heading}}</h1>
-    <button mat-icon-button *ngIf="this.form.disabled" (click)="this.form.enable()">
+    <h1>{{this.mode == 'add' ? 'Add Case' : this.mode == 'edit' ? 'Edit Case' : 'View Details'}}</h1>
+    <button mat-icon-button *ngIf="this.form.disabled" (click)="this.form.enable();this.mode = 'edit'">
         <mat-icon class="mat-18">edit</mat-icon>
     </button>
 </div>
@@ -14,6 +14,12 @@
                         File No.
                     </label>
                     <input formControlName="fileNo" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="File No.">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">
+                        Court Name
+                    </label>
+                    <input formControlName="courtName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" placeholder="Enter Court Name">
                 </div>
                 <div>
                     <label class="block text-gray-700 text-sm font-bold mb-2">
@@ -41,12 +47,12 @@
                 </div>
                 <div>
                     <label for="exampleCaseStage" class="block text-gray-700 text-sm font-bold mb-2">Case Stage</label>
-                    <select formControlName="caseStage" class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" id="exampleCaseStage">
+                    <input formControlName="caseStage" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"  placeholder="Enter case stage" type="text">
+                    <!-- <select formControlName="caseStage" class="shadow border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full" id="exampleCaseStage">
                         <option selected value="Fir">Fir</option>
                         <option value="Fr">Fr</option>
                         <option value="Challan">Challan</option>
-                        <!-- <option value="3">Three</option> -->
-                    </select>
+                    </select> -->
                     <!-- <label class="block text-gray-700 text-sm font-bold mb-2">
                         Case Stage	
                     </label>
