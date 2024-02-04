@@ -75,8 +75,8 @@ export class CaseListComponent implements OnInit {
         console.log("primary", res);
         item['isDeleted'] = 1;
         const casesData = this.afs.collection('cases').doc(item['docId'])
-        // casesData.set(item).then((deletres)=>{
-        // })
+        casesData.set(item).then((deletres)=>{
+        })
       }
     })
 
