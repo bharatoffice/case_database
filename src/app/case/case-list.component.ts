@@ -6,6 +6,7 @@ import { ConfrimationDialogComponent } from './confrimation-dialog/confrimation-
 import { ExcelService } from '../services/excel.export.service';
 import { take } from 'rxjs';
 import * as XLSX from 'xlsx';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-case-list',
   templateUrl: './case-list.component.html',
@@ -21,6 +22,7 @@ export class CaseListComponent implements OnInit {
   backupData!:any;
   constructor(
     private afs : AngularFirestore,
+    private _router : Router,
 		private _matDialog: MatDialog,
     private _excelService : ExcelService
   ) { }
@@ -115,5 +117,15 @@ export class CaseListComponent implements OnInit {
     /* save to file */
     XLSX.writeFile(wb, 'SheetJS.xlsx');
     
+  }
+
+  logOut(){
+    localStorage.clear();
+    const payload = {
+      userValid : false
+    }
+    const auth = this.afs.collection('auth').doc('0Bp2KfpGJGMTaRpXqlGO')
+    auth.update(payload);
+    this._router.navigate(['/auth/login'])
   }
 }

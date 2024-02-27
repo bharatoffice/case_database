@@ -9,7 +9,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { ConfrimationDialogComponent } from './confrimation-dialog/confrimation-dialog.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
+import { Route, RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  // {path : '',  },
+  { path: '', pathMatch: 'full', redirectTo: 'list' },
+  {
+    path : 'list',
+    component : CaseListComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -19,6 +28,7 @@ import {MatTableModule} from '@angular/material/table';
   ],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
     MatButtonModule,
     MatTableModule,
     MatDialogModule,
@@ -28,7 +38,7 @@ import {MatTableModule} from '@angular/material/table';
     ReactiveFormsModule
   ],
   exports : [
-    CaseListComponent,
+    // CaseListComponent,
   ]
 })
 export class CaseModule { }
