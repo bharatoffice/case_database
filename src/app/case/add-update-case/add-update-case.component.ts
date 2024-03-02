@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -50,16 +50,34 @@ export class AddUpdateCaseComponent implements OnInit {
 
   createForm(data?:any){
     this.form = this._fb.group({
-      fileNo : [data?.fileNo || ''],
+      fileNo : [data?.fileNo || '', Validators.required],
       courtName : [data?.courtName || ''],
       perviousDate : [data?.perviousDate || ''],
       caseNo : [data?.caseNo || ''],
       partyName1 : [data?.partyName1 || ''],
+      partyName1Bold : [data?.partyName1Bold || false],
       partyName2 : [data?.partyName2 || ''],
+      partyName2Bold : [data?.partyName2Bold || false],
       caseStage : [data?.caseStage || ''],
       nextDate : [data?.nextDate || ''],
       remark : [data?.remark || '']
     })
+  }
+
+  applyBold(isFor:string){
+    if(isFor === 'partyName1Bold'){
+      this.form.get('partyName1Bold')?.setValue(true);
+    }else{
+      this.form.get('partyName2Bold')?.setValue(true);
+    }
+  }
+
+  removeBold(isFor:string){
+    if(isFor === 'partyName1Bold'){
+      this.form.get('partyName1Bold')?.setValue(false);
+    }else{
+      this.form.get('partyName2Bold')?.setValue(false);
+    }
   }
 
   onSubmit(){
