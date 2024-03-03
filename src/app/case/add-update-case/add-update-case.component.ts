@@ -60,7 +60,7 @@ export class AddUpdateCaseComponent implements OnInit {
       partyName2Bold : [data?.partyName2Bold || false],
       caseStage : [data?.caseStage || ''],
       nextDate : [data?.nextDate || ''],
-      remark : [data?.remark || ''] 
+      remark : [data?.remark || '']  
     })
   }
 
