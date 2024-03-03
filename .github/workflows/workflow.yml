@@ -1,0 +1,30 @@
+name: Github Pages Deploy
+
+on: 
+  push: 
+    branches: "master"
+
+
+jobs:
+  build: 
+    runs-on: ubuntu-latest 
+
+    strategy:
+      matrix :
+        node-version: [16.14]
+
+
+    steps:
+      - name: Chechout
+        uses: actions/checkout@v1
+
+      - name: Install and build
+        working-directory: ./cases_database-v2
+        run:  npm i --force && npm run ng -- build --base-href="./" && cp dist/cases_database-v2/index.html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch : gh-pages
+          folder : cases_database-v2/dist/cases_database-v2
+          
