@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Route[] = [
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: 'login',
     component : LoginComponent

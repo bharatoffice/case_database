@@ -5,6 +5,8 @@ import { AuthGuardGuard } from './auth/guards/auth-guard.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
+  { path: '**', pathMatch: 'full', redirectTo: 'auth' },
+
   {
     path : 'auth',
     children : [
@@ -12,10 +14,10 @@ const routes: Routes = [
         path : '',
         loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule)  
       },
-      {
-        path : 'forgot-password',
-        loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
-      }
+      // {
+      //   path : 'forgot-password',
+      //   loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule)
+      // }
     ]
   },
 
