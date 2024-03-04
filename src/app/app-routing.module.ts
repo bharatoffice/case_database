@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './auth/guards/auth-guard.guard';
+import { PageNotFoundComponent } from './404/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth' },
-  { path: '**', pathMatch: 'full', redirectTo: 'auth' },
+  { path: '', pathMatch: 'full', redirectTo: 'case' },
+  
+
+  { 
+    path : 'not-found',
+    component : PageNotFoundComponent
+  },
 
   {
     path : 'auth',
@@ -24,12 +30,14 @@ const routes: Routes = [
 
   {
     path : 'case',
-    canActivate:[AuthGuardGuard],
+    // canActivate:[AuthGuardGuard],
     children : [
-        {path : 'database', loadChildren: () => import('./case/case.module').then(m => m.CaseModule)}
+        {path : '', loadChildren: () => import('./case/case.module').then(m => m.CaseModule)}
     ]
   },
 
+  { path: '**', pathMatch: 'full',  
+        component: PageNotFoundComponent },
 ];
 
 @NgModule({

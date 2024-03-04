@@ -20,15 +20,32 @@ export class CaseListComponent implements OnInit {
   dataSource!:any;
   filterDate!:any;
   backupData!:any;
+  userValid:boolean = false;
   constructor(
     private afs : AngularFirestore,
     private _router : Router,
 		private _matDialog: MatDialog,
     private _excelService : ExcelService
-  ) { }
+  ) { 
+
+        // this._router.navigate(['/auth/login'])
+
+    const auth = this.afs.collection('auth');
+    auth.doc('0Bp2KfpGJGMTaRpXqlGO').valueChanges().pipe().subscribe((res:any) => {
+      console.log("changes get", res.userValid);
+      if(res?.userValid === false){
+        this._router.navigate(['/auth/login'])
+        this.userValid = false;
+      }else{
+        this.userValid = true;
+      }
+      
+    })
+    
+  }
 
   ngOnInit(): void {
-    
+   
     this.loadData()
   }
 
@@ -128,4 +145,7 @@ export class CaseListComponent implements OnInit {
     auth.update(payload);
     this._router.navigate(['/auth/login'])
   }
+
+
+
 }

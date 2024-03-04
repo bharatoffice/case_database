@@ -1,0 +1,27 @@
+
+.wrapper {
+    background-color: #1a202c;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 4rem;
+    color: #cbd5e0;
+}
+
+.message {
+    font-size: 1.5rem;
+    color: #a0aec0;
+    margin-top: 1rem;
+}
+
+.button {
+    margin-top: 2rem;
+}

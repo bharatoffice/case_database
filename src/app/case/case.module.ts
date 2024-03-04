@@ -10,12 +10,14 @@ import { ConfrimationDialogComponent } from './confrimation-dialog/confrimation-
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import { Route, RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from '../auth/guards/auth-guard.guard';
 
 const routes: Routes = [
   // {path : '',  },
   { path: '', pathMatch: 'full', redirectTo: 'list' },
   {
     path : 'list',
+    // canActivate:[AuthGuardGuard],
     component : CaseListComponent
   }
 ]

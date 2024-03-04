@@ -9,10 +9,12 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat'; 
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';    
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { PageNotFoundComponent } from './404/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ], 
   imports: [
     BrowserModule,

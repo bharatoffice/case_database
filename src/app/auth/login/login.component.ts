@@ -20,6 +20,14 @@ export class LoginComponent implements OnInit {
     private _router : Router,
     private _fb :FormBuilder
   ) { 
+
+    const payload = {
+      userValid : false
+    }
+    const auth = this.afs.collection('auth').doc('0Bp2KfpGJGMTaRpXqlGO')
+    auth.update(payload);
+
+
     this.form = this._fb.group({
       email : ['', Validators.required],
       password : ['', Validators.required]
@@ -39,9 +47,12 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     console.log("form", this.form.value);
     if(this.userValid()){
-      localStorage.setItem('PACtoken', 'jjshbdjsdfjsdfjskdhfjsdfsjdf');
-      this._router.navigate(['/case/database/list']);
+      console.log("jdhfbjsdfh sd");
+      this._router.navigate(['/case/list'])
       this._messageBar.open('Login Successful', 'OKAY', {duration : 3000});
+      // localStorage.setItem('PACtoken', 'jjshbdjsdfjsdfjskdsdmfnhfjsdfsjdf');
+      // this._router.navigate(['/case/list']);
+
     }else{
       localStorage.clear();
       this._messageBar.open('Failed to login! email password incorrect', 'OKAY', {duration : 3000});
