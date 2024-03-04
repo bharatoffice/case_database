@@ -1,55 +1,54 @@
-# name: Github Pages Deploy
+name: Github Pages Deploy
 
-# on: 
-#   push: 
-#     branches: "master"
-
-
-# jobs:
-#   build: 
-#     runs-on: ubuntu-latest 
-
-#     strategy:
-#       matrix :
-#         node-version: [16.14]
-
-
-#     steps:
-#       - name: Chechout
-#         uses: actions/checkout@v1
-
-#       - name: Install and build
-#         working-directory: ./cases_database-v2
-#         run: 
-#           npm i --force
-#           npm run ng -- build --base-href="./"
-
-
-#       - name: Deploy
-#         uses: JamesIves/github-pages-deploy-action@4.1.5
-#         with:
-#           branch : gh-pages
-#           folder : cases_database-v2/dist/cases_database-v2
-#           
-
-
-name: Build and Deploy
 on: 
-  push : 
+  push: 
     branches: "master"
 
+
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build: 
+    runs-on: ubuntu-latest 
+
+    strategy:
+      matrix :
+        node-version: [16.14]
+
+
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Chechout
+        uses: actions/checkout@v1
+
+      - name: Install and Build 
+        # working-directory: ./cases_database-v2
         run: |
           npm i --force
           npm run ng -- build --base-href="./"
-      - name: Deploy 🚀
+
+
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: ./dist/cases_database-v2 # The folder the action should deploy.
+          branch : gh-pages
+          folder : cases_database-v2/dist/cases_database-v2        
+
+
+# name: Build and Deploy
+# on: 
+#   push : 
+#     branches: "master"
+
+# jobs:
+#   build-and-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout 🛎️
+#         uses: actions/checkout@v2.3.1
+#       - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+#         run: |
+#           npm i --force
+#           npm run ng -- build --base-href="./"
+#       - name: Deploy 🚀
+#         uses: JamesIves/github-pages-deploy-action@4.1.5
+#         with:
+#           branch: gh-pages # The branch the action should deploy to.
+#           folder: ./dist/cases_database-v2 # The folder the action should deploy.
